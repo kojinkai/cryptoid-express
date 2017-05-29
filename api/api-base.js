@@ -1,6 +1,6 @@
 class ApiBase {
 
-  createRequestOptions(config, crypto, API_KEY, API_SECRET, ACCOUNT_ID) {
+  createRequestOptions(config, crypto, API_KEY, API_SECRET) {
     const timestamp = Math.floor(Date.now() / 1000);
     const message = timestamp + config.method + config.path + config.body;
     const signature = crypto.createHmac('sha256', API_SECRET).update(message).digest('hex');
