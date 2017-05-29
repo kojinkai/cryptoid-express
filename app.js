@@ -22,6 +22,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use('/', index);
 app.use('/account', account);
+app.use('/buys', buys);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
