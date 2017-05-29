@@ -1,23 +1,21 @@
 const ApiBase = require('./api-base');
 const request = require('request');
 
-function AccountClient(config, crypto, API_KEY, API_SECRET, ACCOUNT_ID) {
-  this.config     = config;
-  this.crypto     = crypto;
-  this.API_KEY    = API_KEY;
-  this.API_SECRET = API_SECRET;
-  this.ACCOUNT_ID = ACCOUNT_ID;
+class AccountClient extends ApiBase {
 
-  if (!(this instanceof AccountClient)) {
-    return new AccountClient();
+  constructor(config, crypto, API_KEY, API_SECRET, ACCOUNT_ID) {
+    super();
+    this.config     = config;
+    this.crypto     = crypto;
+    this.API_KEY    = API_KEY;
+    this.API_SECRET = API_SECRET;
+    this.ACCOUNT_ID = ACCOUNT_ID;
   }
-}
 
-AccountClient.prototype = Object.create(ApiBase.prototype);
-
-AccountClient.prototype.getAccount = function(callback) {
-  const options = this.createRequestOptions(this.config, this.crypto, this.API_KEY, this.API_SECRET, this.ACCOUNT_ID);
-  request(options, callback);
+  getAccount(callback) {
+    const options = this.createRequestOptions(this.config, this.crypto, this.API_KEY, this.API_SECRET, this.ACCOUNT_ID);
+    request(options, callback);
+  }  
 }
 
 module.exports = AccountClient;

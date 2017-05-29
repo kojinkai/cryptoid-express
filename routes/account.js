@@ -11,7 +11,7 @@ const requestConfig = {
   path: `/v2/accounts/${accountID}`,
   body: ''
 };
-const accountClient = new AccountClient(requestConfig, crypto, apiKey, apiSecret, accountID, request);
+const accountClient = new AccountClient(requestConfig, crypto, apiKey, apiSecret, accountID);
 
 router.get('/', (req, res, next) => {
   accountClient.getAccount((err, response) => {
