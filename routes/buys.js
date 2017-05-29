@@ -3,10 +3,10 @@ const router  = express.Router();
 const Client  = require('../api/client');
 
 const client = new Client();
-const accountClient = client.createAccountClient();
+const buysClient = client.createBuysClient();
 
 router.get('/', (req, res, next) => {
-  accountClient.getAccount((err, response) => {
+  buysClient.getBuys((err, response) => {
     if (err) {
       console.log(err);
     }
