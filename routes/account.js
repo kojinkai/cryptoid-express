@@ -1,13 +1,13 @@
 const express = require('express');
 const router  = express.Router();
+const Client  = require('../api/client');
 
 const apiKey    = process.env.API_KEY;
 const apiSecret = process.env.API_SECRET;
 const accountID = process.env.ACCOUNT_ID;
 
-const Client = require('../api/client');
-const client = new Client(apiKey, apiSecret, accountID);
-const accountClient = client.createClient('account');
+const client = new Client();
+const accountClient = client.createAccountClient();
 
 router.get('/', (req, res, next) => {
   accountClient.getAccount((err, response) => {
