@@ -6,7 +6,7 @@ class BuysClient extends ApiBase {
   constructor(config, crypto, API_KEY, API_SECRET, ACCOUNT_ID) {
     super();
     this.config =  {
-      path: `/v2/accounts/${ACCOUNT_ID}`,
+      path: `/v2/accounts/${ACCOUNT_ID}/buys`,
     };
     this.crypto     = crypto;
     this.API_KEY    = API_KEY;
