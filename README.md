@@ -26,7 +26,7 @@ export API_SECRET=<_your_api_secret_>
 # n.b. ID's can be obtained by making an authenticated call to https://api.coinbase.com/v2/accounts/
 # this will return all your accounts and their IDs
 # see https://developers.coinbase.com/docs/wallet/api-key-authentication for more
-export ACCOUNT_ID='<_your_account_ID_>'
+export ACCOUNT_ID=<_your_account_ID_>
 npm start
 ```
 
