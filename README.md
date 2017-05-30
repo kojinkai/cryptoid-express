@@ -14,8 +14,6 @@ This file is ignored and not checked into version control as it contains your ap
 ```bash
 #!/bin/bash
 
-# run this script with . ./start.sh to get the exported variables into the sub shell
-
 # Put the app in debug mode, useful for development
 export DEBUG=cryptoid-express:*
 # put your key here
@@ -28,6 +26,11 @@ export API_SECRET=<_your_api_secret_>
 # see https://developers.coinbase.com/docs/wallet/api-key-authentication for more
 export ACCOUNT_ID=<_your_account_ID_>
 npm start
+```
+
+Then run
+```bash
+$ . ./start.sh
 ```
 
 * This is the counterpart API interface for the front-end React application that extends the coinbase dashboard found here https://github.com/kojinkai/cryptoid
