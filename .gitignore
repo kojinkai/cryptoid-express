@@ -1,4 +1,6 @@
 node_modules
 keys.txt
 scratch.txt
+account.json
+purchases.json
 start.sh
