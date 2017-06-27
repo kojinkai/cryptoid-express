@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "ava",
+    "lint": "eslint **/*.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -16,6 +18,11 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "eslint": "^4.1.1",
+    "eslint-config-boxdeluxe": "^0.2.3",
     "nodemon": "^1.11.0"
+  },
+  "eslintConfig": {
+      "extends": "boxdeluxe"
   }
 }

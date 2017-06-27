@@ -4,7 +4,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const helmet = require('helmet')
+const helmet = require('helmet');
 
 const index   = require('./routes/index');
 const account = require('./routes/account');
@@ -13,7 +13,7 @@ const buys    = require('./routes/buys');
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-}
+};
 
 const app = express();
 app.use(helmet());
@@ -28,7 +28,7 @@ app.use('/buys', buys);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

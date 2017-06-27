@@ -6,7 +6,7 @@ class BuysClient extends ApiBase {
   constructor(ACCOUNT_ID) {
     super();
     this.config =  {
-      path: `/v2/accounts/${ACCOUNT_ID}/buys`,
+      path: `/v2/accounts/${ACCOUNT_ID}/buys`
     };
   }
 
@@ -18,7 +18,7 @@ class BuysClient extends ApiBase {
 
     const options = this.createRequestOptions(config);
     request(options, callback);
-  }  
+  }
 }
 
 module.exports = BuysClient;

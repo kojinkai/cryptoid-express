@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+/* eslint-disable new-cap */
+let router = express.Router();
+/* eslint-enable new-cap */
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.send(200);
 });
 

@@ -2,13 +2,16 @@ const crypto = require('crypto');
 
 class ApiBase {
   constructor() {
+    /* eslint-disable no-process-env */
     this.apiKey    = process.env.API_KEY;
     this.apiSecret = process.env.API_SECRET;
+    /* eslint-enable no-process-env */
   }
 
   createRequestOptions(config) {
     const timestamp = Math.floor(Date.now() / 1000);
     const message = timestamp + config.method + config.path + config.body;
+    console.log('message is: ', message);
     const signature = crypto.createHmac('sha256', this.apiSecret).update(message).digest('hex');
     const options = {
       baseUrl: 'https://api.coinbase.com/',
@@ -23,7 +26,7 @@ class ApiBase {
     };
 
     return options;
-  }  
+  }
 }
 
 module.exports = ApiBase;
