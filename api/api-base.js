@@ -11,7 +11,7 @@ class ApiBase {
   createRequestOptions(config) {
     const timestamp = Math.floor(Date.now() / 1000);
     const message = timestamp + config.method + config.path + config.body;
-    console.log('message is: ', message);
+
     const signature = crypto.createHmac('sha256', this.apiSecret).update(message).digest('hex');
     const options = {
       baseUrl: 'https://api.coinbase.com/',

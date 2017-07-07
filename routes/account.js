@@ -35,7 +35,6 @@ router.get('/', (req, res) => {
     const formattedAccounts = JSON.parse(response.body).data.map(account => formatAccountFromRaw(account));
 
     res.send({ data: formattedAccounts });
-    // res.send(response.body);
 
   });
 
@@ -63,7 +62,6 @@ router.get('/:id', (req, res) => {
 
 
 router.get('/:id/buys', (req, res) => {
-  console.log('controller: getting buys by ID: ', req.params.id);
 
   if (isUndefined(req.params.id)) {
     res.send('use a valid account ID');
