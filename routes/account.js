@@ -14,10 +14,10 @@ function isUndefined(value) {
 }
 
 function formatAccountFromRaw(rawAccount) {
-  const { name, currency, id } = rawAccount.data;
+  const { name, currency, id } = rawAccount;
 
   const formattedAccount = {
-    balance: rawAccount.data.native_balance,
+    balance: rawAccount.native_balance,
     currency,
     id,
     name
@@ -32,10 +32,10 @@ router.get('/', (req, res) => {
     if (err) {
       console.log(err);
     }
-
     const formattedAccounts = JSON.parse(response.body).data.map(account => formatAccountFromRaw(account));
 
     res.send({ data: formattedAccounts });
+    // res.send(response.body);
 
   });
 
@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
     }
 
     const originalAccount = JSON.parse(response.body);
-    const formattedAccount = formatAccountFromRaw(originalAccount);
+    const formattedAccount = formatAccountFromRaw(originalAccount.data);
 
     res.send({ data: formattedAccount });
 

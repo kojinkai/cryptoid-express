@@ -8,7 +8,6 @@ const helmet = require('helmet');
 
 const index   = require('./routes/index');
 const account = require('./routes/account');
-const buys    = require('./routes/buys');
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -24,7 +23,6 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use('/', index);
 app.use('/account', account);
-app.use('/buys', buys);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
