@@ -3,22 +3,46 @@ const request = require('request');
 
 class AccountClient extends ApiBase {
 
-  constructor(ACCOUNT_ID) {
+  constructor() {
     super();
-    this.config =  {
-      path: `/v2/accounts/${ACCOUNT_ID}`
-    };
+    this.apiVersion = 'v2';
+    this.resource = 'accounts';
   }
 
-  getAccount(callback) {
-    const config = Object.assign({
+  getAccounts(callback) {
+    const config = {
       method: 'GET',
-      body: ''
-    }, this.config);
+      body: '',
+      path: `/${this.apiVersion}/${this.resource}`
+    };
 
     const options = this.createRequestOptions(config);
     request(options, callback);
-  }  
+  }
+
+  getAccountByID(id, callback) {
+    const config = {
+      method: 'GET',
+      body: '',
+      path: `/${this.apiVersion}/${this.resource}/${id}`
+    };
+    const options = this.createRequestOptions(config);
+    
+    request(options, callback);
+  }
+
+  getBuysByID(id, callback) {
+    const config = {
+      method: 'GET',
+      body: '',
+      path: `/${this.apiVersion}/${this.resource}/${id}/buys`
+    };
+
+    const options = this.createRequestOptions(config);
+    request(options, callback);
+  }
+
+
 }
 
 module.exports = AccountClient;
