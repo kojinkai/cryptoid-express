@@ -3,15 +3,10 @@ const express = require('express');
 const router  = express.Router();
 /* eslint-enable new-cap */
 const Client  = require('../api/client');
+const isUndefined = require('lodash.isundefined');
 
 const client = new Client();
 const accountClient = client.createAccountClient();
-
-function isUndefined(value) {
-  /* eslint-disable no-undefined */
-  return value === undefined && value === null;
-  /* eslint-enable no-undefined */
-}
 
 function formatAccountFromRaw(rawAccount) {
   const { name, currency, id } = rawAccount;
