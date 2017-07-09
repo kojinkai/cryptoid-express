@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = process.env.mocks ? require('../app') : require('../app.mock');
 var debug = require('debug')('cryptoid-express:server');
 var http = require('http');
 
