@@ -21,13 +21,28 @@ function formatAccountFromRaw(rawAccount) {
   return formattedAccount;
 }
 
+function formatPurchaseFromRaw(rawPurchase) {
+  const { id, total } = rawPurchase;
+  const currency = rawPurchase.amount.currency;
+
+  const formattedPurchase = {
+    currency,
+    id,
+    total
+  }
+
+  return formattedPurchase
+}
+
 router.get('/', (req, res) => {
 
   accountClient.getAccounts((err, response) => {
     if (err) {
       console.log(err);
     }
-    const formattedAccounts = JSON.parse(response.body).data.map(account => formatAccountFromRaw(account));
+
+    const originalAccounts = JSON.parse(response.body);    
+    const formattedAccounts = originalAccounts.data.map(formatAccountFromRaw);
 
     res.send({ data: formattedAccounts });
 
@@ -67,7 +82,10 @@ router.get('/:id/buys', (req, res) => {
       console.log(err);
     }
 
-    res.send(response.body);
+    const originalPurchase = JSON.parse(response.body);
+    const formattedPurchases = originalPurchase.data.map(formatPurchaseFromRaw);
+    console.log('formatted purchases: ', formattedPurchases);
+    res.send({ data: formattedPurchases });
 
   });
 
