@@ -3,44 +3,41 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
 const {
   allAccounts,
   bitcoinBuys,
   ethereumBuys
 } = require('./dummy-data');
 
-function formatAccountFromRaw(rawAccount) {
-  const { name, currency, id } = rawAccount;
-
-  const formattedAccount = {
-    balance: rawAccount.native_balance,
-    currency,
-    id,
-    name
-  };
-
-  return formattedAccount;
-}
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+};
 
 function formatPurchaseFromRaw(rawPurchase) {
-  const { id, total } = rawPurchase;
+  const { id, total, status, created_at } = rawPurchase;
   const currency = rawPurchase.amount.currency;
 
   const formattedPurchase = {
     currency,
     id,
-    total
+    total,
+    status,
+    created_at,
   }
 
   return formattedPurchase
 }
 
 const app = express();
-
+app.use(helmet());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors(corsOptions));
 
 app.get('/account', (req, res, next) => {
   console.log('sending accounts');

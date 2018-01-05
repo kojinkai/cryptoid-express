@@ -22,13 +22,16 @@ function formatAccountFromRaw(rawAccount) {
 }
 
 function formatPurchaseFromRaw(rawPurchase) {
-  const { id, total } = rawPurchase;
+  console.log(rawPurchase);
+  const { id, total, status, created_at } = rawPurchase;
   const currency = rawPurchase.amount.currency;
 
   const formattedPurchase = {
     currency,
     id,
-    total
+    total,
+    status,
+    created_at,
   }
 
   return formattedPurchase
@@ -72,7 +75,7 @@ router.get('/:id', (req, res) => {
 
 
 router.get('/:id/buys', (req, res) => {
-
+  console.log('foobar');
   if (isUndefined(req.params.id)) {
     res.send('use a valid account ID');
   }
