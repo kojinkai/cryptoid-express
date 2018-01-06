@@ -17,7 +17,7 @@ const corsOptions = {
 };
 
 function formatPurchaseFromRaw(rawPurchase) {
-  const { id, total, status, created_at } = rawPurchase;
+  const { id, total, status, created_at, amount } = rawPurchase;
   const currency = rawPurchase.amount.currency;
 
   const formattedPurchase = {
@@ -26,6 +26,7 @@ function formatPurchaseFromRaw(rawPurchase) {
     total,
     status,
     created_at,
+    amount,
   }
 
   return formattedPurchase
