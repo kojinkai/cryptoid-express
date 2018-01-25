@@ -1,5 +1,7 @@
 # cryptoid-express
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kojinkai/cryptoid-express.svg)](https://greenkeeper.io/)
+
 A lightweight express app to handle requests and decorate them with authentication headers
 
 ## Installation
